@@ -1,0 +1,22 @@
+---
+title: "Homework 4, Problem 1"
+author: "Katie Blitsman (kb2908)"
+date: "October 27, 2017"
+output: html_document
+---
+
+#Loading & tidying the data
+
+Before we begin analysis on the data, we must first load and tidy the pups database. The code to do so is shown below:
+``` {r problem 1, messages = FALSE}
+library(tidyverse)
+library(janitor)
+
+pups_data = read_csv("../Data/FAS_pups.csv",
+                     col_types = "ciiiii") %>% 
+  clean_names() %>% 
+  gather(key = outcome, value = days, pd_ears:pd_walk) %>% 
+  separate(outcome, into = c("remove", "dev_landmark"), sep = "_") %>% 
+  select(-remove)
+
+```
