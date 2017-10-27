@@ -12,7 +12,7 @@ Before we begin analysis on the data, we must first load and tidy the pups datab
 library(tidyverse)
 library(janitor)
 
-pups_data = read_csv("../Data/FAS_pups.csv",
+pups_data = read_csv("./FAS_pups.csv",
                      col_types = "ciiiii") %>% 
   clean_names() %>% 
   gather(key = outcome, value = days, pd_ears:pd_walk) %>% 
