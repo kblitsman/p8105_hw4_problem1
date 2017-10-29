@@ -20,4 +20,8 @@ pups_data = read_csv("./FAS_pups.csv",
   filter(!is.na(days)) %>% 
   select(-remove)
 
+ggplot(pups_data, aes(x = dev_landmark, y = days)) + geom_violin(aes(fill = dev_landmark), color = "blue") + stat_summary(fun.y = median, geom = "point", color = "blue", size = 4)
+
 ```
+
+We analyzed the amount of post-natal days it takes for certain developmental landmarks to develop in puppies, using density violins to visualize the data. It appears that ears develop the quickest with median days being `r round(median(subset(pups_data, dev_landmark == "ears")$days),2)`, while eyes take the longest amount of days to develop, with a median of `r round(median(subset(pups_data, dev_landmark == "eyes")$days),2)` days.
