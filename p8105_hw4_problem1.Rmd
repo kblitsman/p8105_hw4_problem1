@@ -17,6 +17,7 @@ pups_data = read_csv("./FAS_pups.csv",
   clean_names() %>% 
   gather(key = outcome, value = days, pd_ears:pd_walk) %>% 
   separate(outcome, into = c("remove", "dev_landmark"), sep = "_") %>% 
+  filter(!is.na(days)) %>% 
   select(-remove)
 
 ```

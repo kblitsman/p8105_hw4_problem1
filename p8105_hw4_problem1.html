@@ -139,11 +139,12 @@ $(document).ready(function () {
 ## lag():    dplyr, stats</code></pre>
 <pre class="r"><code>library(janitor)
 
-pups_data = read_csv(&quot;../Data/FAS_pups.csv&quot;,
+pups_data = read_csv(&quot;./FAS_pups.csv&quot;,
                      col_types = &quot;ciiiii&quot;) %&gt;% 
   clean_names() %&gt;% 
   gather(key = outcome, value = days, pd_ears:pd_walk) %&gt;% 
   separate(outcome, into = c(&quot;remove&quot;, &quot;dev_landmark&quot;), sep = &quot;_&quot;) %&gt;% 
+  filter(!is.na(days)) %&gt;% 
   select(-remove)</code></pre>
 </div>
 
