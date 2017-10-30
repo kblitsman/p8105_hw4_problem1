@@ -8,10 +8,12 @@ output: html_document
 #Loading & tidying the data
 
 Before we begin analysis on the data, we must first load and tidy the pups database. The code to do so is shown below:
-``` {r problem 1, messages = FALSE}
+``` {r problem1_loading, messages = FALSE}
+#Loading libraries
 library(tidyverse)
 library(janitor)
 
+#Load and clean pups data
 pups_data = read_csv("./FAS_pups.csv",
                      col_types = "ciiiii") %>% 
   clean_names() %>% 
@@ -19,8 +21,15 @@ pups_data = read_csv("./FAS_pups.csv",
   separate(outcome, into = c("remove", "dev_landmark"), sep = "_") %>% 
   filter(!is.na(days)) %>% 
   select(-remove)
+```
 
-ggplot(pups_data, aes(x = dev_landmark, y = days)) + geom_violin(aes(fill = dev_landmark), color = "blue") + stat_summary(fun.y = median, geom = "point", color = "blue", size = 4)
+#Plotting the data
+
+``` {r problem1_plotting}
+#Create plot
+ggplot(pups_data, aes(x = dev_landmark, y = days)) + 
+  geom_violin(aes(fill = dev_landmark), color = "blue") + 
+  stat_summary(fun.y = median, geom = "point", color = "blue", size = 4)
 
 ```
 
