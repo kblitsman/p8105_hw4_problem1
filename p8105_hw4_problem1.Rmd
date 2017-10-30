@@ -33,7 +33,6 @@ ggplot(pups_data, aes(x = dev_landmark, y = days)) +
   xlab("Developmental landmark") +
   ylab("Number of post-natal days") +
   labs(title = "Distribution of post-natal days to reach development landmarks")
-
 ```
 
 We analyzed the amount of post-natal days it takes for certain developmental landmarks to develop in puppies, using density violins to visualize the data. It appears that ears develop the quickest with median days being `r round(median(subset(pups_data, dev_landmark == "ears")$days),2)`, while eyes take the longest amount of days to develop, with a median of `r round(median(subset(pups_data, dev_landmark == "eyes")$days),2)` days.
