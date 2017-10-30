@@ -29,7 +29,10 @@ pups_data = read_csv("./FAS_pups.csv",
 #Create plot
 ggplot(pups_data, aes(x = dev_landmark, y = days)) + 
   geom_violin(aes(fill = dev_landmark), color = "blue") + 
-  stat_summary(fun.y = median, geom = "point", color = "blue", size = 4)
+  stat_summary(fun.y = median, geom = "point", color = "blue", size = 4) +
+  xlab("Developmental landmark") +
+  ylab("Number of post-natal days") +
+  labs(title = "Distribution of post-natal days to reach development landmarks")
 
 ```
 
